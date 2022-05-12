@@ -1,0 +1,19 @@
+spring:
+  main:
+    allow-circular-references: true
+  datasource:
+    #url: jdbc:mysql://ovz1.j71491578.pr46m.vps.myjino.ru:49516/comand_DB?useUnicode=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    #url: jdbc:mysql://localhost:3308/comand_DB?useUnicode=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    #username: xuser
+    #password: gidadi69
+    url: jdbc:mysql://localhost:3306/livestock_db?useUnicode=true&serverTimezone=UTC&useSSL=false
+    username: root
+    password: texttext
+  jpa:
+    #show_sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+upload: /upload/
+
