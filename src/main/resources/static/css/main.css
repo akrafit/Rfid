@@ -1,24 +1,27 @@
-h1{
+h1 {
     font-size: 20pt;
 }
-h2{
+
+h2 {
     font-size: 16pt;
 }
 
-table{
-          font-style: normal;
-          font-family: system-ui;
-          font-size: large;
-          text-align: center;
+table {
+    font-style: normal;
+    font-family: system-ui;
+    font-size: large;
+    text-align: center;
 }
+
 /* Собственно сам слайдер */
-.slider{
+.slider {
     max-width: 60%;
     position: relative;
     margin: auto;
     height: 50%;
     margin-bottom: 15px;
 }
+
 /* Картинка масштабируется по отношению к родительскому элементу */
 .slider .item img {
     object-fit: cover;
@@ -27,6 +30,7 @@ table{
     border: none !important;
     box-shadow: none !important;
 }
+
 /* Кнопки вперед и назад */
 .slider .prev, .slider .next {
     cursor: pointer;
@@ -42,15 +46,18 @@ table{
     height: 10%;
     width: 10%;
 }
+
 .slider .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
+
 /* При наведении на кнопки добавляем фон кнопок */
 .slider .prev:hover,
 .slider .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 /* Заголовок слайда */
 .slideText {
     position: absolute;
@@ -63,11 +70,13 @@ table{
     /* Тень*/
     text-shadow: 1px 1px 1px #000, 0 0 1em #000;
 }
+
 /* Кружочки */
 .slider-dots {
     text-align: center;
 }
-.slider-dots_item{
+
+.slider-dots_item {
     cursor: pointer;
     height: 12px;
     width: 12px;
@@ -77,10 +86,12 @@ table{
     display: inline-block;
     transition: background-color 0.6s ease;
 }
+
 .active,
 .slider-dots_item:hover {
     background-color: #aaa;
 }
+
 /* Анимация слайдов */
 .slider .item {
     -webkit-animation-name: fade;
@@ -88,6 +99,7 @@ table{
     animation-name: fade;
     animation-duration: 1.5s;
 }
+
 @-webkit-keyframes fade {
     from {
         opacity: .4
@@ -96,6 +108,7 @@ table{
         opacity: 1
     }
 }
+
 @keyframes fade {
     from {
         opacity: .4
@@ -104,7 +117,8 @@ table{
         opacity: 1
     }
 }
-.bull{
+
+.bull {
     width: 30px;
 }
 

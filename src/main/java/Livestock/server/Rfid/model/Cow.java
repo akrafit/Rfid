@@ -1,13 +1,15 @@
 package Livestock.server.Rfid.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name="cow")
 public class Cow {
     @Id
@@ -26,12 +28,17 @@ public class Cow {
     @Column(name = "color", columnDefinition = "varchar(255)")
     private String color;
 
-    @Column(name = "tag", columnDefinition = "varchar(255)")
-    private String tag;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "tag_id")
+    private Tag tag;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "cow_id", nullable = false, insertable = false, updatable = false)
     private List<Photo> photoList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cow_id", nullable = false, insertable = false, updatable = false)
+    private List<CowMove> cowMoveListList;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status", columnDefinition = "varchar(255)")

@@ -1,13 +1,18 @@
 package Livestock.server.Rfid.dto;
 
 import Livestock.server.Rfid.model.Cow;
+
+import Livestock.server.Rfid.model.Tag;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-@Data
+@Getter
+@Setter
 public class CowDto {
     private Long id;
     private String tag;
@@ -23,7 +28,13 @@ public class CowDto {
     public CowDto(Cow cow) {
         LocalDateTime now = LocalDateTime.now();
         this.id = cow.getId();
-        this.tag = cow.getTag();
+        Tag tag = cow.getTag();
+        if(tag != null){
+           this.tag = tag.getEpc();
+        }else{
+            this.tag = "-";
+        }
+
         this.color = cow.getColor();
         this.type = cow.getType();
         if (cow.getBirthday() != null) {

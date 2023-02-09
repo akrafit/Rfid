@@ -1,0 +1,28 @@
+<tr>
+    <form xmlns:th="http://www.w3.org/1999/xhtml">
+
+        <td></td>
+        <td th:if="${cow.tag != null}"><input type="text" id="tag" th:value="@{${cow.tag.epc}}"/>
+        </th>
+        <td th:unless="${cow.tag != null}"><input type="text" id="tag"/></td>
+
+        <td>
+            <fieldset>
+                <input type="radio" id="type1" name="male" value="Б"
+                       checked>
+                <label for="type1">Б</label>
+                <input type="radio" id="type2" name="male" value="Т">
+                <label for="type2">Т</label>
+            </fieldset>
+
+
+        </td>
+        <td><input type="text" id="color" th:value="@{${cow.color}}"/></td>
+        <td><input type="date" id="birthday" th:value="@{${cow.birthday}}"/></td>
+        <td><input type="button" id="btn" value="Отправить"/></td>
+        <td>
+
+        </td>
+
+    </form>
+</tr>

@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:div="http://www.w3.org/1999/xhtml"
-      xmlns:text="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <title>Список</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -12,10 +11,10 @@
           integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw=="
           crossorigin="anonymous">
     <!-- Дополнительные стили Bootstrap (не обязательно) -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css"
-          integrity="sha512-iy8EXLW01a00b26BaqJWaCmk9fJ4PsMdgNRqV96KwMPSH+blO82OHzisF/zQbRIIi8m0PiO10dpS0QxrcXsisw=="
-          crossorigin="anonymous">
+<!--    <link rel="stylesheet"-->
+<!--          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css"-->
+<!--          integrity="sha512-iy8EXLW01a00b26BaqJWaCmk9fJ4PsMdgNRqV96KwMPSH+blO82OHzisF/zQbRIIi8m0PiO10dpS0QxrcXsisw=="-->
+<!--          crossorigin="anonymous">-->
     <!-- jQuery (необходим для Bootstrap JS) -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
             integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
@@ -44,6 +43,23 @@
         z-index: 9;
         margin: 20px; /* для демонстрации  */
   }
+  ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+   ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 3px; /* Поля вокруг текста */
+    background: #5cb85c;
+    color: #ffffff;
+    font-size: larger;
+   }
+   a{
+   color: #ffffff;
+   text-decoration: none;
+ }
 
     </style>
 </head>
@@ -52,7 +68,12 @@
 <div class="container">
 
     <div class="box">
-        <h1>Список</h1>
+        <ul class="hr">
+            <li><a href="/cow">Журнал</a></li>
+            <li><a href="/traffic">Движение</a></li>
+            <li>Шапокляк</li>
+        </ul>
+        <h1><span th:text="${title}+${date}"></span></h1>
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -62,8 +83,37 @@
                 <th>Возраст, месяцев</th>
                 <th>Дата записи</th>
                 <th>Состояние</th>
+                <th>Фото</th>
+                <th></th>
                 <th></th>
             </tr>
+
+            <tr id="input">
+                <form>
+                    <td><input type="hidden" id="cowid"/></td>
+                    <td><input type="text" id="tag" placeholder="метка"/></td>
+                    <td><fieldset>
+                            <input type="radio" id="type1"  name="male" value="Б"
+                                   checked>
+                            <label for="type1">Б</label>
+                            <input type="radio" id="type2" name="male" value="Т">
+                            <label for="type2">Т</label>
+                    </fieldset>
+
+
+                    </td>
+                    <td><input type="text" id="color" placeholder="цвет"/></td>
+                    <td><input type="date" id="birthday"/></td>
+                    <td><input type="button" id="btn" value="Отправить" /></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </form>
+
+
+            </tr>
+
             <tr th:each="cow : ${cows}">
                 <td th:utext="${cow.id}"></td>
                 <td style="font-weight: bold" th:utext="${cow.tag}"></td>
@@ -80,28 +130,11 @@
                 </td>
 
                 <td>
-                    <button title="Удалить запись" type="submit" th:value="@{${cow.id}}" onclick="del(this.value)">
+                    <button title="Удалить запись" type="submit" class="tr_copy" th:onclick="'change(\'' + ${cow.id} + '\');'">
                         &#10060;
                     </button>
                 </td>
             </tr>
-
-                <tr>
-                    <form>
-                    <th></th>
-                    <th><input type="text" id="tag" placeholder="метка"/></th>
-                    <th><input type="text" id="type" placeholder="тип"/></th>
-                    <th><input type="text" id="color" placeholder="цвет"/></th>
-                    <th><input type="date" id="birthday" placeholder="день рождения"/></th>
-                    <th><input type="button" id="btn" value="Отправить" /></th>
-                    <th>
-
-                    </th>
-                    </form>
-
-
-                </tr>
-
         </table>
     </div>
 
