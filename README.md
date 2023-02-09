@@ -1,12 +1,12 @@
 Rfid метки
 =============================
 
-Блоговый движок на Java - Spring-Framework
+Клиентская программа для контроля движения RFID меток на Java - Spring-Framework
 
 [![Build Status](https://github.com/yiisoft/yii/workflows/build/badge.svg)](https://github.com/akrafit/thesis)
 
 Проект написан по принципу трехслойного приложения:
-* Клиентский слой - на Thymeleaf + JavaScript; 
+* Клиентский слой - на шаблонах Thymeleaf + JavaScript; 
 * Сервисный слой - на Java - Spring-Framework;
 * Слой данных - на MySQL 8.0
 
